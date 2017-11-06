@@ -8,6 +8,8 @@
  *
  * @author Lucas Santana
  *          Richard Rosatti
+ *
+ *          Teste
  */
 public class EliminacaoGauss {
 
