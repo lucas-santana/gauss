@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+import java.util.Scanner;
+
 /**
  *
  * @author Lucas Santana
@@ -17,7 +19,12 @@ public class EliminacaoGauss {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       int n=4;
+        Scanner scanner = new Scanner(System.in);
+        int n=3;//ordem da matriz
+
+        Metodos metodos = new Metodos();
+
+
        
        //matriz para triangular inferior
         double mat[][] = {{2,0,0,0},{3,5,0,0},{1,-6,8,0},{-1,4,-3,9}};
@@ -33,91 +40,37 @@ public class EliminacaoGauss {
         double mat3[][] = {{1,0,1},{1,1,0},{2,3,1}};
         double b3[] = {0,1,1};
         double x3[];
-        
-        
-        
-        
-      /*  for (int i=0;i<n;i++){
-            
-            
-            for (int j=0;j<n;j++){
-               System.out.print("\t"+mat[i][j]);
-            }
-             System.out.println();
-            
-            
-        }*/
-        
-        //x = triangularInferior(n,mat,b);
-        //x2 = triangularSuperior(n, mat2, b2);
-        x3 = gauss(n, mat2, b2);
-          
-          
-        for(int i=0;i<n;i++){
-            System.out.println(x3[i]);
-        }
+
+        //matriz exemplo 2 aula 11  que não pode ser resolvido sem pivoteamento
+        double mat4[][] = {{2,2,-1},{3,3,1},{1,-1,5}};
+        double b4[] = {3,7,5};
+        double x4[];
+
+
+        x = metodos.triangularInferior(mat.length,mat,b);
+        x2 = metodos.triangularSuperior(mat2.length, mat2, b2);
+        x3 = metodos.gauss(mat3.length, mat3, b3);
+        x4 = metodos.gaussComPivotamentoParcial(mat4.length,mat4,b4);
+
+
+        metodos.imprimirVetor(x4);
+
+
+
+        //Teste para saber se está trocando a linha corretamente
+       /* metodos.imprimirMatriz(mat4);
+        metodos.trocaLinhas(0,1,mat4);
+
+        System.out.println("------------------------------------");
+
+        metodos.imprimirMatriz(mat4);*/
+
     }
     
     
     
     
-     public static double[] triangularInferior(int n, double mat[][],double b[]){
-        
-        double x[] = new double[n];
-        double soma = 0.0;
-        x[0] = b[0]/mat[0][0];
-        
-        for (int i=1;i<n;i++){
-            soma = 0.0;
-            
-            for (int j=0;j<i;j++){
-                soma = soma + mat[i][j]*x[j];
-            }
-            
-            x[i] = (b[i]-soma)/mat[i][i];
-        }
-        return x;
-    }
-     
-     
-     public static double[] triangularSuperior(int n, double mat[][],double b[]){
-         
-         double x[] = new double[n];
-        double soma = 0.0;
-        x[n-1] = b[n-1]/mat[n-1][n-1];
-        
-        for (int i=n-2;i>=0;i--){
-            soma = 0.0;
-            
-            for (int j=n-1;j>=0;j--){
-                soma = soma + mat[i][j]*x[j];
-            }
-            
-            x[i] = (b[i]-soma)/mat[i][i];
-        }
-        return x;
-         
-     }
-     
-     public static double[] gauss(int n, double mat[][],double b[]){
-         double m;
-         double x[] = new double[n];
-         
-         for(int k=0;k<=n-1;k++){
-             for (int i=k+1;i<n;i++){
-                 m = mat[i][k]/mat[k][k];
-                 
-                 for (int j=k;j<n;j++){
-                     mat[i][j] = mat[i][j] - m*mat[k][j];
-                 }
-                 b[i] = b[i]- m*b[k];
-             }
-             
-         }
-         
-         x = triangularSuperior(n, mat, b);
-         return x;
-     }
+
      
      
     
