@@ -73,7 +73,7 @@ public class Metodos {
             mat[k][i] = mat[r][i];
             mat[r][i] = aux;
         }
-        System.out.println("--------------Troca de Linhas-----------------");
+        //System.out.println("--------------Troca de Linhas-----------------");
     }
 
     public static double[] gaussComPivotamentoParcial(int n, double mat[][], double b[]) {
@@ -96,15 +96,19 @@ public class Metodos {
                     r = j;
                 }
             }
-            System.out.println("--------------Operação-----------------");
-            imprimirMatriz(mat);
+           // System.out.println("--------------Operação-----------------");
+            //imprimirMatriz(mat);
             trocaLinhas(k,r,mat);
 
-            imprimirMatriz(mat);
+           // imprimirMatriz(mat);
 
             for (int i = k + 1; i < n; i++) {
-                m = mat[i][k] / mat[k][k];
 
+                /*String valor = String.format("%.2f",(mat[i][k] / mat[k][k]));
+
+                m = Double.parseDouble(valor.replace(",","."));*/
+
+                m = mat[i][k] / mat[k][k];
                 for (int j = k; j < n; j++) {
                     mat[i][j] =  mat[i][j] - m * mat[k][j];
                 }

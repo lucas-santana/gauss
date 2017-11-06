@@ -49,11 +49,11 @@ public class EliminacaoGauss {
 
         x = metodos.triangularInferior(mat.length,mat,b);
         x2 = metodos.triangularSuperior(mat2.length, mat2, b2);
-        x3 = metodos.gauss(mat3.length, mat3, b3);
+        x3 = metodos.gaussComPivotamentoParcial(mat3.length, mat3, b3);
         x4 = metodos.gaussComPivotamentoParcial(mat4.length,mat4,b4);
 
 
-        metodos.imprimirVetor(x4);
+        metodos.imprimirVetor(x3);
 
 
 
